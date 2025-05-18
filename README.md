@@ -26,7 +26,7 @@ END_TEST_LIST();
 ```
 
 Чтобы объявить тесты в списке требуется вызвать макросы TEST_START и TEST_END:
-```
+```c++
 TEST_START(MySuite, "TestA") {
     //statements
 }
@@ -105,40 +105,40 @@ TOTAL Disabled: 0
 ### Макросы проверки
 В библиотеке есть различные макросы проверок, их список:
 ```c++
-FAIL() - выброс неудачи теста
-SUCCESS() - выброс успеха теста
+FAIL() //- выброс неудачи теста
+SUCCESS() //- выброс успеха теста
 
-ASSERT_TRUE(expr) - строгая проверка истинности выражения
-ASSERT_FALSE(expr) - строгая проверка ложности выражения
-ASSERT_EQ(lexpr, rexpr) - строгая проверка равенства аргументов
-ASSERT_NEQ(lexpr, rexpr) - строгая проверка неравенства аргументов
-ASSERT_EX(call) - строгая проверка выброса любого исключения
-ASSERT_THIS_EX(call, ex) - строгая проверка выброса конкретного исключения
+ASSERT_TRUE(expr) //- строгая проверка истинности выражения
+ASSERT_FALSE(expr) //- строгая проверка ложности выражения
+ASSERT_EQ(lexpr, rexpr) //- строгая проверка равенства аргументов
+ASSERT_NEQ(lexpr, rexpr) //- строгая проверка неравенства аргументов
+ASSERT_EX(call) //- строгая проверка выброса любого исключения
+ASSERT_THIS_EX(call, ex) //- строгая проверка выброса конкретного исключения
 
-EXPECT_TRUE(expr) - проверка истинности выражения
-EXPECT_FALSE(expr) - проверка ложности выражения
-EXPECT_EQ(lexpr, rexpr) - проверка равенства аргументов
-EXPECT_NEQ(lexpr, rexpr) - проверка неравенства аргументов
-EXPECT_EX(call) - проверка выброса любого исключения
-EXPECT_THIS_EX(call, ex) - проверка выброса конкретного исключения
+EXPECT_TRUE(expr) //- проверка истинности выражения
+EXPECT_FALSE(expr) //- проверка ложности выражения
+EXPECT_EQ(lexpr, rexpr) //- проверка равенства аргументов
+EXPECT_NEQ(lexpr, rexpr) //- проверка неравенства аргументов
+EXPECT_EX(call) //- проверка выброса любого исключения
+EXPECT_THIS_EX(call, ex) //- проверка выброса конкретного исключения
 
-WAIT_MS(n) - ожидание n миллисекунд
-WAIT_SEC(n) - ожидание n секунд
-WAIT_MIN(n) - ожидание n минут
+WAIT_MS(n) //- ожидание n миллисекунд
+WAIT_SEC(n) //- ожидание n секунд
+WAIT_MIN(n) //- ожидание n минут
 
-THROW_EX() - выброс исключения (стандартное исключени std::string("Modestest exception"))
+THROW_EX() //- выброс исключения (стандартное исключени std::string("Modestest exception"))
 ```
 Отличия строгой проверки от обычной в том, что строгая проверка завершает выполнение теста в случае провала, а обычная лишь выводит сообщение о провале и помечает статус теста, как FAIL.
 
 ### Генерация имён
 Для единообразия названий тестов добавлена библиотека генерации имён, в которой реализованы следующие макросы:
 ```c++
-GET_NAME(name) - делает из name имя name_test
-SMOKE(name) - делает из name имя name_smoke_test
-MEDIUM(name) - делает из name имя name_medium_test
-HEAVY(name) - делает из name имя name_heavy_test
-CRITICAL(name) - делает из name имя name_critical_test
-CUSTOM(prefix, name) - делает из name имя name_prefix_test
+GET_NAME(name) //- делает из name имя name_test
+SMOKE(name) //- делает из name имя name_smoke_test
+MEDIUM(name) //- делает из name имя name_medium_test
+HEAVY(name) //- делает из name имя name_heavy_test
+CRITICAL(name) //- делает из name имя name_critical_test
+CUSTOM(prefix, name) //- делает из name имя name_prefix_test
 ```
 Эти имена удобны при запуске тестов по фильтрам, например, запуск тестов после каждой сборки с фильтром -filter=\*smoke\* 
 
